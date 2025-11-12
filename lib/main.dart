@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:football_news/screens/login.dart';
 import 'package:football_news/screens/menu.dart';
+import 'package:pbp_django_auth/pbp_django_auth.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +14,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+    return Provider(
+      create: (_) {
+        CookieRequest request = CookieRequest();
+        return request;
+      },
+
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+      
+
+
+
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
@@ -29,9 +42,14 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+          .copyWith(secondary: Colors.blueAccent[400]),
+
+        ),
+      home: const LoginPage()
+
       ),
-      home: MyHomePage(colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
-          .copyWith(secondary: Colors.blueAccent[400])),
+    
     );
   }
 }
